@@ -9,7 +9,7 @@ jobs:
   deploy:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
+      - uses: actions/checkout@v3
       - uses: actions/setup-node@v1
         with:
           node-version: "14.x"
@@ -20,5 +20,5 @@ jobs:
       - name: Deploy to gh-pages
         uses: peaceiris/actions-gh-pages@v3
         with:
-          github_token: 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
+          github_token: ${{ secrets.GITHUB_TOKEN }}
           publish_dir: ./build
