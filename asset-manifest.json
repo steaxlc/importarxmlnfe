@@ -1,0 +1,13 @@
+{
+  "files": {
+    "main.css": "/calculoaliquota/static/css/main.aadea442.css",
+    "main.js": "/calculoaliquota/static/js/main.c4d2d4d5.js",
+    "index.html": "/calculoaliquota/index.html",
+    "main.aadea442.css.map": "/calculoaliquota/static/css/main.aadea442.css.map",
+    "main.c4d2d4d5.js.map": "/calculoaliquota/static/js/main.c4d2d4d5.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.aadea442.css",
+    "static/js/main.c4d2d4d5.js"
+  ]
+}
