@@ -1,13 +1,169 @@
-body {
-  margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
-    sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+* {
+    margin: 0;
+    padding: 0;
 }
 
-code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
-    monospace;
+body{
+    background: rgb(56,249,242);
+    background: linear-gradient(135deg, rgba(56,249,242,1) 0%, rgb(197, 71, 255) 100%) no-repeat;
+    width: 100%;
+    min-height: 100vh;
+}
+
+h1{
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
+h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+h4{
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 7px;
+    margin-bottom: 15px;
+}
+
+p{
+    
+    margin: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+button{
+    background: none;
+    padding: 7px;
+    border: 3px solid #6d38f9;
+    border-radius: 25px;
+    color: #6d38f9;
+    cursor: pointer;
+}
+.InfoProgress{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ArquivosProntos{
+    margin-bottom: 6px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+button:hover {
+    background-color: #6d38f9 ;
+    color: white;
+    transition: 0.7s;
+}
+
+.UploadBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 750px;
+    background: rgb(255, 255, 255);
+    border-radius: 30px;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.centralizar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.BotaoVoltar h4{
+    margin-top: 15px;
+    font-size: 24px;
+    padding: 0 30px;
+}
+
+.BotaoVoltar button:hover {
+    background-color: white ;
+    color: #6d38f9;
+    transition: 0.7s;
+}
+.BotaoVoltar button {
+    border-radius: 40px;
+    border: 3px solid white;
+    color: white;
+    transition: 0.7s;
+}
+
+.UploadButton{
+    border: 5px dashed rgb(226, 226, 226);
+    flex-direction: column;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    margin-right: 30px;
+    height: 250px;
+    width: 330px;
+}
+
+.UploadCard{
+    display: block;
+    background: white;
+}
+
+.BotaoContinuar{
+    margin-bottom: -25px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+.BotaoVoltar{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin-top: 20px;
+}
+
+#continueButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#backButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.LadoDireito{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    height: 80%;
+}
+
+ #continueButton h4{
+    margin: 7px;
+    margin-bottom: 7px;
+}
+
+#continueButton{
+    
+    background-color: #6d38f9 ;
+    color: white;
+    transition: 0.7s;
+}
+
+.rdt_Table{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
 }
