@@ -182,6 +182,20 @@ button:hover {
     box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
 }
 
+.somaAliquota{
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    margin: 30px;
+    margin-bottom: 50px;
+    padding: 30px;
+    border-radius: 30px;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+
+}
+
 .centralizarFiltros{
     display: flex;
     align-items: center;

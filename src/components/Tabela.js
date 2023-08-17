@@ -129,23 +129,32 @@ const columns = [
     }
   }
 
+  const somarAliquota = (item) => {
+    var temp = 0;
+    item.map((nota) => temp = temp + parseFloat(nota.valorAliquota))
+    return temp
+  }
+
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
   const [selectedCST, setSelectedCST] = useState([]);
   const [selectedCFOP, setSelectedCFOP] = useState([]);
   const [dadosFiltrados, setDadosFiltrados] = useState(allData);
+  const [sumAliquota, setSumAliquota] = useState(somarAliquota(allData));
 
   const handleFilter = () => {
     const temp = allData.filter(
       item => (temCFOP(item) && temCST(item))
     ) 
     setDadosFiltrados(temp)
+    setSumAliquota(somarAliquota(temp))
   }
+
 
   return (
     <div>
       <div className="centralizarFiltros">
       <div className='filtros'>
-        <h1>Filtros da Tabela</h1>
+          <h1>Filtros da Tabela</h1>
         <div className='camposFiltros'>
         <SelectCST allData={allData} setSelectedCST={setSelectedCST} />
       <SelectCFOP allData={allData} setSelectedCFOP={ setSelectedCFOP} />
@@ -153,7 +162,11 @@ const columns = [
           <div className="alinharDireita">
           <button onClick={handleFilter}>Atualizar  Tabela</button>
       </div>
-      </div>
+        </div>
+        <div className="somaAliquota">
+          <h1>Somatório Alíquota</h1>
+          <h1>{ sumAliquota}</h1>
+        </div>
       </div>
       <DataTable
           columns={columns}
