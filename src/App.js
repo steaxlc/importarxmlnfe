@@ -7,13 +7,11 @@ import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgr
 import Stepper from '@mui/material/Stepper';
 import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
-import Button from '@mui/material/Button';
 import Tabela from "./components/Tabela";
 
 import CircularProgress from '@mui/material/CircularProgress';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 import Alert from '@mui/material/Alert';
 
