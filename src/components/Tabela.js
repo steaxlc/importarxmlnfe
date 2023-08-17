@@ -165,7 +165,7 @@ const columns = [
         </div>
         <div className="somaAliquota">
           <h1>Somatório Alíquota</h1>
-          <h1>{ sumAliquota}</h1>
+          <h1>{ sumAliquota.toFixed(2)}</h1>
         </div>
       </div>
       <DataTable
