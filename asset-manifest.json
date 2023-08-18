@@ -1,13 +1,13 @@
 {
   "files": {
     "main.css": "/calculoaliquota/static/css/main.3f537d13.css",
-    "main.js": "/calculoaliquota/static/js/main.13da6c70.js",
+    "main.js": "/calculoaliquota/static/js/main.618c9251.js",
     "index.html": "/calculoaliquota/index.html",
     "main.3f537d13.css.map": "/calculoaliquota/static/css/main.3f537d13.css.map",
-    "main.13da6c70.js.map": "/calculoaliquota/static/js/main.13da6c70.js.map"
+    "main.618c9251.js.map": "/calculoaliquota/static/js/main.618c9251.js.map"
   },
   "entrypoints": [
     "static/css/main.3f537d13.css",
-    "static/js/main.13da6c70.js"
+    "static/js/main.618c9251.js"
   ]
 }
