@@ -36,7 +36,7 @@ function App() {
         var valorDesc, valorOutro, valorFrete, valorAliquota;
         const qtdItem = (dados[nota].det.length ? dados[nota].det.length : 1);
         const data = new Date(dados[nota].ide.dhEmi);
-        const dataCompleta = data.getDate() + "/" + data.getMonth() + "/" + data.getFullYear()
+        const dataCompleta = data.getDate() + "/" + (parseInt(data.getMonth()) + 1) + "/" + data.getFullYear()
           if (qtdItem > 1) {
             for (var ind = 0; ind < qtdItem; ind++) {
               if (dados[nota].det[ind].imposto !== undefined) {
