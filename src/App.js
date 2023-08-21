@@ -22,15 +22,14 @@ function App() {
   const [activeStep, setActiveStep] = useState(0);
   const linhas = [];
 
-  function createData(chave, nNF, dataCompleta, empresa, cfop,vProd, prod, ipi, cst, idLinha,valorDesc, valorOutro,valorFrete,valorAliquota) {
-    return { chave, nNF, dataCompleta, empresa, cfop,vProd, prod, ipi, cst,idLinha,valorDesc, valorOutro, valorFrete,valorAliquota};
+  function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
+    return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
   }
 
 
   const dadosNotas = (dados) => {
     for (var nota in dados) {
       if (dados.hasOwnProperty(nota)) {
-        var idLinha = 0;
         var valorIPI;
         var valorCST = "00";
         var valorDesc, valorOutro, valorFrete, valorAliquota;
@@ -64,18 +63,16 @@ function App() {
                   dados[nota].ide.nNF,
                   dataCompleta,
                   dados[nota].emit.xNome,
-                  dados[nota].det[ind].prod.CFOP,
-                  dados[nota].det[ind].prod.vProd,
                   dados[nota].det[ind].prod.xProd,
-                  valorIPI,
                   valorCST,
-                  idLinha,
+                  dados[nota].det[ind].prod.CFOP,
+                  valorIPI,
+                  dados[nota].det[ind].prod.vProd,
                   valorDesc,
                   valorOutro,
                   valorFrete,
                 valorAliquota))
               } 
-              idLinha++;
               }
           } else {
             if (dados[nota].det.imposto !== undefined) {
@@ -103,19 +100,17 @@ function App() {
                 dados[nota].ide.nNF,
                 dataCompleta,
                 dados[nota].emit.xNome,
-                dados[nota].det.prod.CFOP,
-                dados[nota].det.prod.vProd,
                 dados[nota].det.prod.xProd,
-                valorIPI,
                 valorCST,
-                idLinha,
+                dados[nota].det.prod.CFOP,
+                valorIPI,
+                dados[nota].det.prod.vProd,
                 valorDesc,
                 valorOutro,
                 valorFrete,
                 valorAliquota
               ))
             }
-            idLinha++;
           }
         setAllData([...linhas]);
       }
