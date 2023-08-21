@@ -5,7 +5,7 @@ import SelectCFOP from './SelectCFOP';
 import { useState, useMemo } from "react";
 import * as XLSX from 'xlsx/xlsx.mjs';
 
-export default function Tabela({ allData }) {
+export default function Tabela({ allData, nomeEmpresa }) {
 
   
 const columns = [
@@ -181,7 +181,7 @@ const columns = [
         </div>
       </div>
       <DataTable
-        title='Cálculo ICMS'
+        title={`Cálculo ICMS - ${nomeEmpresa}`}
           columns={columns}
         data={dadosFiltrados}
         dense

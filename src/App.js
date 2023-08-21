@@ -21,6 +21,7 @@ function App() {
   const [cont, setCont] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const linhas = [];
+  const [nomeEmpresa, setNomeEmpresa] = useState("");
 
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
@@ -114,6 +115,7 @@ function App() {
           }
         setAllData([...linhas]);
       }
+      setNomeEmpresa(dados[nota].dest.xNome)
   }
   }
 
@@ -163,7 +165,7 @@ function App() {
         );
         case 1:
           return (
-            <Tabela allData={allData}/>
+            <Tabela nomeEmpresa={nomeEmpresa} allData={allData}/>
           )
         case 2:
           return (
