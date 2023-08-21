@@ -47,18 +47,32 @@ function App() {
                     valorIPI = "0.00"
                   }
                 } else {
-                  valorIPI = "0.00"
+                  valorIPI = "0.00" 
                 }
               } else {
                 valorIPI = "0.00"
               }
-              if (Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "20" || Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "00") {
-                valorCST = Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST
+              if (Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "20" ||
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "00" ||
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "101" ||
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "102") {
+                valorCST = Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST ?
+                  Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST :
+                  Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN;
                 valorDesc = (parseFloat(dados[nota].total.ICMSTot.vDesc) / qtdItem).toFixed(2)
                 valorOutro = (parseFloat(dados[nota].total.ICMSTot.vOutro) / qtdItem).toFixed(2)
                 valorFrete = (parseFloat(dados[nota].total.ICMSTot.vFrete) / qtdItem).toFixed(2)
                 var valorTotal = parseFloat(valorIPI) + parseFloat(valorOutro) + parseFloat(valorFrete) - parseFloat(valorDesc) + parseFloat(dados[nota].det[ind].prod.vProd);
-                var valorDividendo = (valorCST === "00" ? 3.6 / 100 : 1.4 / 100);
+                var valorDividendo = 1;
+                if (valorCST === "00") {
+                  valorDividendo = 3.6/100
+                } else {
+                  if (valorCST === "20") {
+                    valorDividendo = 1.4/100
+                  } else {
+                    valorDividendo = 6.6/100
+                  }
+                }
                 valorAliquota = (valorTotal * valorDividendo).toFixed(2)
                 linhas.push(createData(nota,
                   dados[nota].ide.nNF,
@@ -89,13 +103,27 @@ function App() {
             } else {
               valorIPI = "0.00"
             }
-            if (Object.values(dados[nota].det.imposto.ICMS)[0].CST==="20" || Object.values(dados[nota].det.imposto.ICMS)[0].CST==="00") {
-              valorCST = Object.values(dados[nota].det.imposto.ICMS)[0].CST
+            if (Object.values(dados[nota].det.imposto.ICMS)[0].CST === "20" ||
+            Object.values(dados[nota].det.imposto.ICMS)[0].CST === "00" ||
+            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "101" ||
+            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "102") {
+              valorCST = Object.values(dados[nota].det.imposto.ICMS)[0].CST ?
+                Object.values(dados[nota].det.imposto.ICMS)[0].CST :
+                Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN;
               valorDesc = (parseFloat(dados[nota].total.ICMSTot.vDesc) / qtdItem).toFixed(2)
               valorOutro = (parseFloat(dados[nota].total.ICMSTot.vOutro) / qtdItem).toFixed(2)
               valorFrete = (parseFloat(dados[nota].total.ICMSTot.vFrete) / qtdItem).toFixed(2)
               var valorTotal = parseFloat(valorIPI) + parseFloat(valorOutro) + parseFloat(valorFrete) - parseFloat(valorDesc) + parseFloat(dados[nota].det.prod.vProd);
-              var valorDividendo = (valorCST === "00" ? 3.6 / 100 : 1.4 / 100);
+              var valorDividendo = 1;
+              if (valorCST === "00") {
+                valorDividendo = 3.6/100
+              } else {
+                if (valorCST === "20") {
+                  valorDividendo = 1.4/100
+                } else {
+                  valorDividendo = 6.6/100
+                }
+              }
               valorAliquota = (valorTotal * valorDividendo).toFixed(2)
               linhas.push(createData(nota,
                 dados[nota].ide.nNF,
@@ -148,7 +176,7 @@ function App() {
                 </div>
                 </div> : ''}
               {files !== undefined && cont === files.length && allData.length === 0 ?
-              <Alert severity="warning">Arquivo selecionado não possui <br/> nenhuma NFe com CST 00 ou 20. <br/>Por favor, selecione uma outra nota.</Alert>
+              <Alert severity="warning">Arquivo selecionado não possui  nenhuma<br/> NFe com CST 00, 20, 101 ou 102. <br/>Por favor, selecione uma outra nota.</Alert>
               : ""}
 
               {files === undefined || cont !== files.length || allData.length === 0 ? "" : 

@@ -107,7 +107,7 @@ const columns = [
   const temCST = (item) => {
     if (selectedCST.length > 0) {
       for (var ind = 0; ind < selectedCST.length; ind++){
-        if (item.cst === selectedCST[ind]) {
+        if (item.CST === selectedCST[ind]) {
           return true
         }
       }
@@ -120,7 +120,7 @@ const columns = [
   const temCFOP = (item) => {
     if (selectedCFOP.length > 0) {
       for (var ind = 0; ind < selectedCFOP.length; ind++){
-        if (item.cfop === selectedCFOP[ind]) {
+        if (item.CFOP === selectedCFOP[ind]) {
           return true
         }
       }
