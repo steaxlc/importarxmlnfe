@@ -156,7 +156,7 @@ const columns = [
     
     XLSX.utils.book_append_sheet(wb, ws, "ICMS");
 
-    XLSX.writeFile(wb, "ICMS.xlsx");
+    XLSX.writeFile(wb, `ICMS - ${nomeEmpresa}.xlsx`);
     
   }
 
