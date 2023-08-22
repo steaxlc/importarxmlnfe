@@ -4,9 +4,6 @@ import x2js from 'x2js'
 
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import Stepper from '@mui/material/Stepper';
-import Step from '@mui/material/Step';
-import StepLabel from '@mui/material/StepLabel';
 import Tabela from "./components/Tabela";
 
 import CircularProgress from '@mui/material/CircularProgress';
@@ -255,15 +252,6 @@ function App() {
 
   return (
     <div className="App">
-      <div style={{marginTop: '20px', display: 'none'}}>
-      <Stepper activeStep={activeStep} alternativeLabel>
-        {steps.map((label) => (
-          <Step key={label}>
-                <StepLabel>{label}</StepLabel>
-          </Step>
-        ))}
-      </Stepper>
-      </div>
       {getActiveContente()}
       <div style={{display:'flex', justifyContent:'space-evenly'}}>
         {activeStep === 0 ? '' :

@@ -6,11 +6,10 @@ import Stack from '@mui/material/Stack';
 
 export default function Tags({ allData, setSelectedCST }) {
   const todosCST = [...new Set(allData.map(item => item.CST))];
-  console.log(allData)
 
     const handleChange = (event, value) => setSelectedCST(value);
   return (
-    <Stack spacing={3} sx={{ width: 250,margin:'20px' }}>
+    <Stack spacing={3} sx={{ margin: "10px 0 "}}>
       <Autocomplete
               multiple
               onChange={handleChange}
@@ -25,8 +24,8 @@ export default function Tags({ allData, setSelectedCST }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant="filled"
             label="CST"
+            fullWidth
           />
         )}
       />

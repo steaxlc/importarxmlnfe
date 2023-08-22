@@ -9,7 +9,7 @@ export default function Tags({ allData, setSelectedCFOP }) {
 
     const handleChange = (event, value) => setSelectedCFOP(value);
   return (
-    <Stack spacing={3} sx={{ width: 400, margin:'20px' }}>
+    <Stack spacing={3} sx={{ margin: "10px 0 "}}>
       <Autocomplete
               multiple
               onChange={handleChange}
@@ -24,8 +24,8 @@ export default function Tags({ allData, setSelectedCFOP }) {
         renderInput={(params) => (
           <TextField
             {...params}
-            variant="filled"
             label="CFOP"
+            fullWidth
           />
         )}
       />

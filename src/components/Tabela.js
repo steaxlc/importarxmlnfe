@@ -4,6 +4,10 @@ import SelectCST from './SelectCST';
 import SelectCFOP from './SelectCFOP';
 import { useState, useMemo } from "react";
 import * as XLSX from 'xlsx/xlsx.mjs';
+import Grid from '@mui/material/Grid'
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
+import Paper from '@mui/material/Paper';
 
 export default function Tabela({ allData, nomeEmpresa }) {
 
@@ -130,21 +134,39 @@ const columns = [
     }
   }
 
+  const temChave = (item) => {
+    if (item.Chave.includes(selectedChave)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
+  const temNota = (item) => {
+    if (item.Nota_Fiscal.includes(selectedNota)) {
+      return true
+    } else {
+      return false
+    }
+  }
+
   const somarICMS = (item) => {
     var temp = 0;
     item.map((nota) => temp = temp + parseFloat(nota.ICMS))
     return temp
   }
-
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
   const [selectedCST, setSelectedCST] = useState([]);
   const [selectedCFOP, setSelectedCFOP] = useState([]);
+  const [selectedChave, setSelectedChave] = useState("");
+  const [selectedNota, setSelectedNota] = useState("");
+
   const [dadosFiltrados, setDadosFiltrados] = useState(allData);
   const [sumICMS, setSumICMS] = useState(somarICMS(allData));
 
-  const handleFilter = () => {
+  function handleFilter () {
     const temp = allData.filter(
-      item => (temCFOP(item) && temCST(item))
+      item => (temCFOP(item) && temCST(item) && temChave(item) && temNota(item))
     ) 
     setDadosFiltrados(temp)
     setSumICMS(somarICMS(temp))
@@ -155,6 +177,7 @@ const columns = [
       ws = XLSX.utils.json_to_sheet(dadosFiltrados);
     
     XLSX.utils.book_append_sheet(wb, ws, "ICMS");
+    console.log(dadosFiltrados)
 
     XLSX.writeFile(wb, `ICMS - ${nomeEmpresa}.xlsx`);
     
@@ -164,22 +187,48 @@ const columns = [
 
   return (
     <div className='paginaTabela'>
-      <div className="centralizarFiltros">
-      <div className='filtros'>
-          <h1>Filtros da Tabela</h1>
-        <div className='camposFiltros'>
-        <SelectCST allData={allData} setSelectedCST={setSelectedCST} />
-      <SelectCFOP allData={allData} setSelectedCFOP={ setSelectedCFOP} />
-      </div>
-          <div className="alinharDireita">
-          <button className='downloadButton' onClick={handleFilter}>Atualizar  Tabela</button>
-      </div>
-        </div>
-        <div className="somaAliquota">
-          <h1>Somatório ICMS</h1>
-          <h1>{ sumICMS.toFixed(2)}</h1>
-        </div>
-      </div>
+      <Box sx={{ flexGrow: 1 }}>
+      <Grid container spacing={2}>
+          <Grid item xs={9}>
+            <div className='filtros'>
+              <Grid container spacing={2}>
+                <Grid item xs={12}>
+                  <div className="titulo">
+                    Filtros da Tabela
+                  </div>
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                <TextField id="chave" label="Chave" fullWidth onChange={(e)=> setSelectedChave(e.target.value)} variant="outlined" />
+                  </Grid>
+                  <Grid item xs={6}>
+                  <TextField id="notaFiscal" label="Nota Fiscal" onChange={(e)=> setSelectedNota(e.target.value)}  fullWidth  variant="outlined" />
+                </Grid>
+              </Grid>
+              <Grid container spacing={2}>
+                <Grid item xs={6}>
+                    <SelectCST allData={allData} setSelectedCST={setSelectedCST} />
+                  </Grid>
+                  <Grid item xs={6}>
+                    <SelectCFOP allData={allData} setSelectedCFOP={ setSelectedCFOP} />
+                </Grid>
+              </Grid>
+              <Grid item xs={12}>
+                <div className="alinharDireita">
+                  <button className='downloadButton' onClick={handleFilter}>Atualizar  Tabela</button>
+                </div>
+              </Grid>
+            </div>
+        </Grid>
+          <Grid item xs={3}>
+            <div className="somaAliquota">
+              <h1>Somatório ICMS</h1>
+              <h2>{ sumICMS.toFixed(2)}</h2>
+            </div>
+          </Grid>
+      </Grid>
+    </Box>
       <DataTable
         title={`Cálculo ICMS - ${nomeEmpresa}`}
           columns={columns}
