@@ -20,7 +20,7 @@ function InputXML(props) {
       <div className="UploadButton"
         onDragOver={ handleDragOver}
         onDrop={handleOnDrop}>
-        <DriveFolderUploadIcon sx={{ color: "#6d38f9", fontSize: 40 }} />
+        <DriveFolderUploadIcon sx={{ color: "#3D1A78", fontSize: 40 }} />
         <h3>Arraste e solte os arquivos aqui</h3>
         <h4>ou</h4>
       <button onClick={()=>inputRef.current.click()}

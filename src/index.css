@@ -5,7 +5,7 @@
 
 body{
     background: rgb(56,249,242);
-    background: linear-gradient(135deg, rgba(56,249,242,1) 0%, rgb(197, 71, 255) 100%) no-repeat;
+    background: linear-gradient(135deg, white 0%, #98E8C1 33%,  #26CEAA 66%,  #078D70 100%) no-repeat;
     width: 100%;
     min-height: 100vh;
 }
@@ -37,9 +37,9 @@ p{
 button{
     background: none;
     padding: 7px;
-    border: 3px solid #6d38f9;
+    border: 3px solid #3D1A78;
     border-radius: 25px;
-    color: #6d38f9;
+    color: #3D1A78;
     cursor: pointer;
 }
 .InfoProgress{
@@ -56,7 +56,7 @@ button{
 }
 
 button:hover {
-    background-color: #6d38f9 ;
+    background-color: #3D1A78 ;
     color: white;
     transition: 0.7s;
 }
@@ -68,7 +68,7 @@ button:hover {
     height: 450px;
     width: 750px;
     background: rgb(255, 255, 255);
-    border-radius: 30px;
+    border-left: 7px solid #3D1A78;
     box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
 }
 
@@ -83,12 +83,13 @@ button:hover {
 .BotaoVoltar h4{
     margin-top: 15px;
     font-size: 24px;
+    font-weight: bold;
     padding: 0 30px;
 }
 
 .BotaoVoltar button:hover {
     background-color: white ;
-    color: #6d38f9;
+    color: #3D1A78;
     transition: 0.7s;
 }
 .BotaoVoltar button {
@@ -114,6 +115,7 @@ button:hover {
 .UploadCard{
     display: block;
     background: white;
+    margin-top: -30px;
 }
 
 .BotaoContinuar{
@@ -157,8 +159,8 @@ button:hover {
 }
 
 #continueButton{
-    
-    background-color: #6d38f9 ;
+    padding: 10px;
+    background-color: #3D1A78 ;
     color: white;
     transition: 0.7s;
 }
@@ -171,9 +173,8 @@ button:hover {
 .filtros{
     background-color: white;
     margin: 30px;
-    margin-bottom: 50px;
     padding: 10px;
-    border-radius: 10px;
+    border-left: 7px solid #3D1A78;
     box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
 }
 
@@ -191,12 +192,12 @@ button:hover {
 .downloadButton{
     margin-top: 10px;
     padding: 10px 15px;
-    border: 3px solid black;
-    color: black;
+    border: 3px solid #3D1A78;
+    color: #3D1A78;
 }
 
 .downloadButton:hover {
-    background-color: black ;
+    background-color: #3D1A78 ;
     color: white;
     transition: 0.7s;
 }
@@ -204,15 +205,20 @@ button:hover {
 .somaAliquota{
     background-color: white;
     height: 185px;
-    width: 250px;
+    width: 72%;
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    margin: 30px;
-    margin-bottom: 50px;
+    margin-top: 30px;
     padding: 30px;
-    border-radius: 10px;
+    border-left: 7px solid #3D1A78;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.tabela{
+    margin: 30px;
+    border-left: 7px solid #3D1A78;
     box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
 }
 

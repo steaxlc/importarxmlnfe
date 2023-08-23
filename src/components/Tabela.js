@@ -227,9 +227,10 @@ const columns = [
               <h2>{ sumICMS.toFixed(2)}</h2>
             </div>
           </Grid>
-      </Grid>
-    </Box>
-      <DataTable
+        </Grid>
+        <Grid item xs={12}>
+          <div className="tabela">
+          <DataTable
         title={`Cálculo ICMS - ${nomeEmpresa}`}
           columns={columns}
         data={dadosFiltrados}
@@ -242,6 +243,10 @@ const columns = [
         paginationRowsPerPageOptions={[10, 25, 50, 200, 200]}
           paginationComponentOptions={rowsPerPageText}
       />
+        </div>
+          </Grid>
+    </Box>
+      
       </div>
       );
 }

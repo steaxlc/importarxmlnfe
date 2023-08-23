@@ -28,6 +28,8 @@ function App() {
   const dadosNotas = (dados) => {
     for (var nota in dados) {
       if (dados.hasOwnProperty(nota)) {
+        
+        console.log(dados)
         var valorIPI;
         var valorCST = "00";
         var valorDesc, valorOutro, valorFrete, valorAliquota;
@@ -52,7 +54,9 @@ function App() {
               if (Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "20" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "00" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "101" ||
-              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "102") {
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "102" ||
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "400" ||
+              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "900") {
                 valorCST = Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST ?
                   Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST :
                   Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN;
@@ -103,7 +107,9 @@ function App() {
             if (Object.values(dados[nota].det.imposto.ICMS)[0].CST === "20" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CST === "00" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "101" ||
-            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "102") {
+            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "102" ||
+            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "400" ||
+            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "900") {
               valorCST = Object.values(dados[nota].det.imposto.ICMS)[0].CST ?
                 Object.values(dados[nota].det.imposto.ICMS)[0].CST :
                 Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN;
@@ -163,7 +169,7 @@ function App() {
               {files !== undefined ?
                 <div className="InfoProgress">
                   <div style={{marginBottom: '20px', marginRight: '5px'}}>
-                    {cont === files.length ? <CheckCircleIcon sx={{ color: '#6d38f9' }} size={90} /> : <CircularProgress sx={{ color: '#6d38f9' }} size={28} />}
+                    {cont === files.length ? <CheckCircleIcon sx={{ color: '#3D1A78' }} size={90} /> : <CircularProgress sx={{ color: '#3D1A78' }} size={28} />}
                     </div>
                   <div>
                     <div className="ArquivosProntos">
@@ -180,7 +186,7 @@ function App() {
                 <div className="BotaoContinuar">
                   <button id="continueButton"
                 onClick={()=>{setActiveStep(activeStep+1)}}>
-                <h4>Continuar</h4> <ArrowForwardIcon size={18}/>
+                <h3>Continuar</h3> <ArrowForwardIcon size={18}/>
               </button>
               </div>
               }
@@ -213,7 +219,7 @@ function App() {
     },
     [`& .${linearProgressClasses.bar}`]: {
       borderRadius: 5,
-      backgroundColor: theme.palette.mode === 'light' ? '#6d38f9' : '#6d38f9',
+      backgroundColor: theme.palette.mode === 'light' ? '#3D1A78' : '#3D1A78',
     },
   }));
 
@@ -256,11 +262,11 @@ function App() {
       <div style={{display:'flex', justifyContent:'space-evenly'}}>
         {activeStep === 0 ? '' :
           <div className="BotaoVoltar">
-          <button id="backButton"
-        onClick={()=>{setActiveStep(activeStep-1)}}>
-        <h4>Voltar</h4> 
-      </button>
-      </div>}
+            <button id="backButton"
+            onClick={()=>{setActiveStep(activeStep-1)}}>
+              <h4>Voltar</h4> 
+            </button>
+          </div>}
       </div>
     </div>
   );
