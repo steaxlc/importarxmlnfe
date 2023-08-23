@@ -51,12 +51,14 @@ function App() {
               } else {
                 valorIPI = "0.00"
               }
-              if (Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "20" ||
+              if ((Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "20" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST === "00" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "101" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "102" ||
               Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "400" ||
-              Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "900") {
+                Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN === "900") && (
+                  dados[nota].det[ind].prod.CFOP > 4999 && dados[nota].det[ind].prod.CFOP < 6000
+              )) {
                 valorCST = Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST ?
                   Object.values(dados[nota].det[ind].imposto.ICMS)[0].CST :
                   Object.values(dados[nota].det[ind].imposto.ICMS)[0].CSOSN;
@@ -104,12 +106,14 @@ function App() {
             } else {
               valorIPI = "0.00"
             }
-            if (Object.values(dados[nota].det.imposto.ICMS)[0].CST === "20" ||
+            if ((Object.values(dados[nota].det.imposto.ICMS)[0].CST === "20" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CST === "00" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "101" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "102" ||
             Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "400" ||
-            Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "900") {
+              Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN === "900") && (
+                dados[nota].det.prod.CFOP > 4999 && dados[nota].det.prod.CFOP < 6000
+            )) {
               valorCST = Object.values(dados[nota].det.imposto.ICMS)[0].CST ?
                 Object.values(dados[nota].det.imposto.ICMS)[0].CST :
                 Object.values(dados[nota].det.imposto.ICMS)[0].CSOSN;

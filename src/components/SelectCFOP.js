@@ -5,7 +5,8 @@ import TextField from '@mui/material/TextField';
 import Stack from '@mui/material/Stack';
 
 export default function Tags({ allData, setSelectedCFOP }) {
-    const todosCFOP = [...new Set(allData.map(item => item.CFOP))];
+  const todosCFOP = [...new Set(allData.map(item => item.CFOP))];
+  todosCFOP.sort();
 
     const handleChange = (event, value) => setSelectedCFOP(value);
   return (
