@@ -179,7 +179,7 @@ function App() {
                 </div>
                 </div> : ''}
               {files !== undefined && cont === files.length && allData.length === 0 ?
-              <Alert severity="warning">Arquivo selecionado não possui  nenhuma<br/> NFe com CST 00, 20, 101 ou 102. <br/>Por favor, selecione uma outra nota.</Alert>
+              <Alert severity="warning">Arquivo selecionado não possui  nenhuma<br/> NFe com CST 00, 20, 101, <br/>102, 400 ou 900. <br/>Por favor, selecione uma outra nota.</Alert>
               : ""}
 
               {files === undefined || cont !== files.length || allData.length === 0 ? "" : 
