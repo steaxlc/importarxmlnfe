@@ -13,12 +13,14 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 import Alert from '@mui/material/Alert';
 
 function App() {
+
   const [files, setFiles] = useState();
   const [allData, setAllData] = useState();
   const [cont, setCont] = useState(0);
   const [activeStep, setActiveStep] = useState(0);
   const linhas = [];
   const [nomeEmpresa, setNomeEmpresa] = useState("");
+  const [dadosFiltrados, setDadosFiltrados] = useState();
 
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
@@ -28,8 +30,6 @@ function App() {
   const dadosNotas = (dados) => {
     for (var nota in dados) {
       if (dados.hasOwnProperty(nota)) {
-        
-        console.log(dados)
         var valorIPI;
         var valorCST = "00";
         var valorDesc, valorOutro, valorFrete, valorAliquota;
@@ -149,16 +149,11 @@ function App() {
             }
           }
         setAllData([...linhas]);
+        setDadosFiltrados([...linhas])
       }
       setNomeEmpresa(dados[nota].dest.xNome)
   }
   }
-
-  const steps = [
-    'Selecionar Arquivos',
-    'Filtrar Dados',
-    'Exportar para Excel',
-  ];
 
   const getActiveContente = () => {
     switch (activeStep) {
@@ -200,7 +195,11 @@ function App() {
         );
         case 1:
           return (
-            <Tabela nomeEmpresa={nomeEmpresa} allData={allData}/>
+            <Tabela nomeEmpresa={nomeEmpresa}
+              allData={allData}
+              dadosFiltrados={dadosFiltrados}
+              setDadosFiltrados={setDadosFiltrados}
+            />
           )
         case 2:
           return (

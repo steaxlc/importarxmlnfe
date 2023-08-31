@@ -7,9 +7,8 @@ import * as XLSX from 'xlsx/xlsx.mjs';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
-import Paper from '@mui/material/Paper';
 
-export default function Tabela({ allData, nomeEmpresa }) {
+export default function Tabela({ allData, nomeEmpresa, dadosFiltrados, setDadosFiltrados}) {
 
   
 const columns = [
@@ -160,8 +159,6 @@ const columns = [
   const [selectedCFOP, setSelectedCFOP] = useState([]);
   const [selectedChave, setSelectedChave] = useState("");
   const [selectedNota, setSelectedNota] = useState("");
-
-  const [dadosFiltrados, setDadosFiltrados] = useState(allData);
   const [sumICMS, setSumICMS] = useState(somarICMS(allData));
 
   function handleFilter () {
@@ -177,13 +174,12 @@ const columns = [
       ws = XLSX.utils.json_to_sheet(dadosFiltrados);
     
     XLSX.utils.book_append_sheet(wb, ws, "ICMS");
-    console.log(dadosFiltrados)
 
     XLSX.writeFile(wb, `ICMS - ${nomeEmpresa}.xlsx`);
     
   }
 
-  const actionsMemo = useMemo(() => <button className='downloadButton' onClick={handleDownload}><span>Exportar Excel</span></button>, []);
+  const actionsMemo = useMemo(() => <button className='downloadButton' onClick={handleDownload}><span>Exportar Excel</span></button>, [dadosFiltrados]);
 
   return (
     <div className='paginaTabela'>
