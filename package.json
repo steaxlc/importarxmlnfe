@@ -1,6 +1,6 @@
 {
-  "name": "calculoaliquota",
-  "homepage": "https://steaxlc.github.io/calculoaliquota/",
+  "name": "importarxmlnfe",
+  "homepage": "https://steaxlc.github.io/importarxmlnfe/",
   "version": "0.1.0",
   "private": true,
   "dependencies": {
@@ -11,6 +11,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
+    "firebase": "^10.3.1",
     "gh-pages": "^6.0.0",
     "node-sass": "^9.0.0",
     "react": "^18.2.0",

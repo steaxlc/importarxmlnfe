@@ -10,6 +10,9 @@ import CircularProgress from '@mui/material/CircularProgress';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
+import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
+import {auth} from './services/firebase'
+
 import Alert from '@mui/material/Alert';
 
 function App() {
@@ -21,6 +24,7 @@ function App() {
   const linhas = [];
   const [nomeEmpresa, setNomeEmpresa] = useState("");
   const [dadosFiltrados, setDadosFiltrados] = useState();
+  const [dadosUsuarios, setDadosUsuarios] = useState(JSON.parse(localStorage.getItem("usuario")))
 
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
@@ -259,18 +263,37 @@ function App() {
     }
   }, [files])
 
+  function handleGoogleSignIn() {
+    const provider = new GoogleAuthProvider()
+    signInWithPopup(auth, provider)
+      .then((result) =>
+      {
+        localStorage.setItem("usuario", JSON.stringify(result.user))
+        setDadosUsuarios(result.user)
+      }
+    )
+      .catch((error) => {
+      console.log(error)
+    })
+    console.log(localStorage.getItem("usuario"))
+  }
+
+  localStorage.removeItem("usuario");
+  console.log(dadosUsuarios)
+
   return (
     <div className="App">
+      <button onClick={handleGoogleSignIn}>Entrar Google</button>
       {getActiveContente()}
-      <div style={{display:'flex', justifyContent:'space-evenly'}}>
-        {activeStep === 0 ? '' :
-          <div className="BotaoVoltar">
-            <button id="backButton"
-            onClick={()=>{setActiveStep(activeStep-1)}}>
-              <h4>Voltar</h4> 
-            </button>
-          </div>}
-      </div>
+        <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
+          {activeStep === 0 ? '' :
+            <div className="BotaoVoltar">
+              <button id="backButton"
+                onClick={() => { setActiveStep(activeStep - 1) }}>
+                <h4>Voltar</h4>
+              </button>
+            </div>}
+        </div>
     </div>
   );
 }
