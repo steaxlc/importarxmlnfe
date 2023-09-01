@@ -278,12 +278,8 @@ function App() {
     console.log(localStorage.getItem("usuario"))
   }
 
-  localStorage.removeItem("usuario");
-  console.log(dadosUsuarios)
-
   return (
     <div className="App">
-      <button onClick={handleGoogleSignIn}>Entrar Google</button>
       {getActiveContente()}
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           {activeStep === 0 ? '' :
