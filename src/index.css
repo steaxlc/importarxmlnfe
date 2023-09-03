@@ -14,6 +14,17 @@ h1{
     font-family: 'Palanquin Dark', sans-serif;
 }
 
+label{
+    margin-left: 10px;
+}
+
+.ContinuarLogado{
+    font-family: 'Palanquin Dark', sans-serif;
+    font-weight: 300;
+    margin-top: 60px;
+
+}
+
 h3{
     font-family: 'Lato', sans-serif;
     font-weight: 300;
@@ -70,6 +81,18 @@ button:hover {
     background: rgb(255, 255, 255);
     border-left: 7px solid #3D1A78;
     box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.InfoLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.InfoLogin h3 {
+    margin-top: 30px;
+    text-align: justify;
 }
 
 .centralizar{
@@ -170,6 +193,27 @@ button:hover {
     font-weight: 300;
 }
 
+.BotaoLogar{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    width: 450px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+}
+
+.BotaoLogar:hover{
+    border: 3px solid transparent;
+}
+
+.BotaoLogar span {
+    margin-left: 15px;
+}
+
+
 .filtros{
     background-color: white;
     margin: 30px;
@@ -249,4 +293,65 @@ button:hover {
 .paginaTabela{
     
     font-family: 'Palanquin Dark', sans-serif;
+}
+
+.DadosUsuarios{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    margin: 10px 10px -30px 0;
+    padding: 10px;
+}
+
+.InfoUsuario{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.parteDeBaixo{
+    border-top: 1px solid lightgray;
+    width: 85%;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.parteDeCima{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.nome{
+    font-weight: bold;
+    font-family: 'Palanquin Dark', sans-serif;
+    margin-bottom: -10px;
+}
+.email{
+    margin-top: -10px;
+
+}
+.usuario{
+    padding: 10px;
+}
+
+.DadosUsuarios img{
+    cursor: pointer;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.TextoSair{
+    font-family: 'Palanquin Dark', sans-serif;
+    margin-left: 10px;
 }

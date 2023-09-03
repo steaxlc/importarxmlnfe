@@ -5,13 +5,12 @@ import x2js from 'x2js'
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import Tabela from "./components/Tabela";
+import Login from "./components/Login";
 
 import CircularProgress from '@mui/material/CircularProgress';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-
-import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
-import {auth} from './services/firebase'
+import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import Alert from '@mui/material/Alert';
 
@@ -25,6 +24,7 @@ function App() {
   const [nomeEmpresa, setNomeEmpresa] = useState("");
   const [dadosFiltrados, setDadosFiltrados] = useState();
   const [dadosUsuarios, setDadosUsuarios] = useState(JSON.parse(localStorage.getItem("usuario")))
+  const [infoOpen, setInfoOpen] = useState(false);
 
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
@@ -262,25 +262,32 @@ function App() {
       }
     }
   }, [files])
-
-  function handleGoogleSignIn() {
-    const provider = new GoogleAuthProvider()
-    signInWithPopup(auth, provider)
-      .then((result) =>
-      {
-        localStorage.setItem("usuario", JSON.stringify(result.user))
-        setDadosUsuarios(result.user)
-      }
-    )
-      .catch((error) => {
-      console.log(error)
-    })
-    console.log(localStorage.getItem("usuario"))
-  }
+  
+  function handleSair() {
+    localStorage.removeItem("usuario")
+    setDadosUsuarios(null)
+}
 
   return (
     <div className="App">
-      {getActiveContente()}
+      <div className="DadosUsuarios">
+        {dadosUsuarios &&
+          <div className="InfoUsuario">
+            <div className="parteDeCima">
+              {infoOpen && <div className="usuario">
+                <span className="nome">{dadosUsuarios.displayName}</span><br />
+                <span className="email">{dadosUsuarios.email}</span>
+              </div>}
+              <img src={dadosUsuarios.photoURL} alt="foto usuario" onClick={()=>setInfoOpen(!infoOpen)}/>
+            </div>
+            {infoOpen && 
+            <div className="parteDeBaixo" onClick={handleSair}>
+             <ExitToAppIcon/> <span className="TextoSair">Sair</span>
+          </div>}
+          </div>
+        }
+      </div>
+      {dadosUsuarios ? <>{getActiveContente()}
         <div style={{ display: 'flex', justifyContent: 'space-evenly' }}>
           {activeStep === 0 ? '' :
             <div className="BotaoVoltar">
@@ -290,6 +297,9 @@ function App() {
               </button>
             </div>}
         </div>
+      </> : <>
+        <Login setDadosUsuarios={setDadosUsuarios} />
+      </>}
     </div>
   );
 }
