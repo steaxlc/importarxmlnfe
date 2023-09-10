@@ -45,12 +45,7 @@ const NavBarImportacao = ( {dadosUsuarios, setDadosUsuarios}) => {
                       </Link>
                       <span className="tooltip">Importar NFe</span>
                   </li>
-                  <li>
-                    <Link to="xmlcfe">
-                        <ReceiptIcon/> <span className="navitem">Importar CFe</span>
-                      </Link>
-                      <span className="tooltip">Importar CFe</span>
-                  </li>
+                  
               </ul>
               <div className="bottom" onClick={handleSair}>
                 <ExitToAppIcon id="sair" />
