@@ -1,5 +1,4 @@
-import React, { useRef } from 'react'
-import Button from '@mui/material/Button';
+import React, { useRef, useState } from 'react'
 import DriveFolderUploadIcon from '@mui/icons-material/DriveFolderUpload';
 
 function InputXML(props) {
@@ -14,9 +13,11 @@ function InputXML(props) {
 
   const inputRef = useRef();
 
+  const [esquerda, setEsquerda] = useState(false)
+
   return (
     <div className='UploadCard'>
-      <h1>Selecionar Arquivos</h1>
+      <div className={`TextoSelecionar ${esquerda ? 'TextoEsquerda' : ''}`}><h1>Selecionar Arquivos</h1></div>
       <div className="UploadButton"
         onDragOver={ handleDragOver}
         onDrop={handleOnDrop}>
@@ -34,6 +35,7 @@ function InputXML(props) {
         onChange={(e) => {
           if (e.target.files && e.target.files.length > 0) {
             props.setFiles(e.target.files);
+            setEsquerda(true)
           }
         }}
       />

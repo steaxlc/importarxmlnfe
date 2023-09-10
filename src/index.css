@@ -291,7 +291,8 @@ button:hover {
 }
 
 .paginaTabela{
-    
+    justify-content: right;
+    margin: 0;
     font-family: 'Palanquin Dark', sans-serif;
 }
 
@@ -354,4 +355,24 @@ button:hover {
 .TextoSair{
     font-family: 'Palanquin Dark', sans-serif;
     margin-left: 10px;
+}
+
+.TextoSelecionar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+.TextoSelecionar.TextoEsquerda{
+    justify-content: left;
+}
+
+.conteudoImportacao{
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    right: 5px;
+    transition: all 0.5s ease;
+    width: calc(100% - 70px);
 }

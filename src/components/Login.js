@@ -3,18 +3,26 @@ import React, { useState } from 'react'
 import { GoogleAuthProvider, signInWithPopup} from "firebase/auth";
 import {auth} from '../services/firebase'
 import GoogleIcon from '@mui/icons-material/Google';
+import { useNavigate,useLocation  } from "react-router-dom";
 
-const Login = ({ setDadosUsuarios }) => {
+const Login = ({ setDadosUsuarios}) => {
     const [continuarLogado, setContinuarLogado] = useState(false);
-
+    const navigate = useNavigate();
+    let location = useLocation();
+  
     function handleGoogleSignIn() {
-        const provider = new GoogleAuthProvider()
+      const provider = new GoogleAuthProvider()
         signInWithPopup(auth, provider)
           .then((result) =>
           {
               if (continuarLogado)
                   localStorage.setItem("usuario", JSON.stringify(result.user));
             setDadosUsuarios(result.user)
+            if( location.pathname.includes("/xmlnfe") || location.pathname.includes("/xmlcfe"))
+              navigate(location.pathname)
+            else {
+              navigate("/importarxmlnfe/xmlnfe")
+            }
           }
         )
             .catch((error) => {
