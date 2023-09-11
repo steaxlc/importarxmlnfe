@@ -155,7 +155,7 @@ button:hover {
     display: flex;
     align-items: right;
     justify-content: right;
-    margin-top: 20px;
+    margin: 20px;
 }
 
 #continueButton{

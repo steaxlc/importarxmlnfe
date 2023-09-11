@@ -140,8 +140,8 @@ const columns = [
     }
   }
 
-  const temChave = (item) => {
-    if (item.Chave.includes(selectedChave)) {
+  const temNCM = (item) => {
+    if (item.NCM.includes(selectedNCM)) {
       return true
     } else {
       return false
@@ -164,13 +164,13 @@ const columns = [
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
   const [selectedCST, setSelectedCST] = useState([]);
   const [selectedCFOP, setSelectedCFOP] = useState([]);
-  const [selectedChave, setSelectedChave] = useState("");
+  const [selectedNCM, setSelectedNCM] = useState("");
   const [selectedCupom, setSelectedCupom] = useState("");
   const [sumICMS, setSumICMS] = useState(somarICMS(allData));
 
   function handleFilter () {
     const temp = allData.filter(
-      item => (temCFOP(item) && temCST(item) && temChave(item) && temNota(item))
+      item => (temCFOP(item) && temCST(item) && temNCM(item) && temNota(item))
     ) 
     setDadosFiltrados(temp)
     setSumICMS(somarICMS(temp))
@@ -203,7 +203,7 @@ const columns = [
               </Grid>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                <TextField id="chave" label="Chave" fullWidth onChange={(e)=> setSelectedChave(e.target.value)} variant="outlined" />
+                <TextField id="ncm" label="NCM" fullWidth onChange={(e)=> setSelectedNCM(e.target.value)} variant="outlined" />
                   </Grid>
                   <Grid item xs={6}>
                   <TextField id="cupomFiscal" label="Cupom Fiscal" onChange={(e)=> setSelectedCupom(e.target.value)}  fullWidth  variant="outlined" />
