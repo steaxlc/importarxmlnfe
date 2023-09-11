@@ -4,7 +4,7 @@ import x2js from 'x2js'
 
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
-import Tabela from "../components/Tabela";
+import Tabela from "../components/TabelaNFe";
 import Login from "../components/Login";
 
 import CircularProgress from '@mui/material/CircularProgress';
