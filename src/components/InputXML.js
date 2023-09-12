@@ -17,7 +17,7 @@ function InputXML(props) {
 
   return (
     <div className='UploadCard'>
-      <div className={`TextoSelecionar ${esquerda ? 'TextoEsquerda' : ''}`}><h1>Selecionar Arquivos</h1></div>
+      <div className={`TextoSelecionar ${esquerda ? 'TextoEsquerda' : ''}`}><h1>Selecionar Arquivos {props.title }</h1></div>
       <div className="UploadButton"
         onDragOver={ handleDragOver}
         onDrop={handleOnDrop}>

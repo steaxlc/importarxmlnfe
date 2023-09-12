@@ -45,7 +45,6 @@ function ImportarXMLCFe({dadosUsuarios}) {
   const dadosNotas = (dados) => {
     for (var nota in dados) {
       if (dados.hasOwnProperty(nota)) {
-        console.log(dados)
         var valorIPI;
         var valorCST = "00";
         var valorDesc, valorOutro, valorFrete, valorAliquota;
@@ -166,7 +165,7 @@ function ImportarXMLCFe({dadosUsuarios}) {
         return (
           <div className="centralizar">
             <div className="UploadBox" >
-            <InputXML 
+            <InputXML title="CFe"
             setFiles={setFiles}
             />
             <div className="LadoDireito">

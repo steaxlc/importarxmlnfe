@@ -164,7 +164,7 @@ function ImportarXMLNFe({dadosUsuarios}) {
         return (
           <div className="centralizar">
             <div className="UploadBox" >
-            <InputXML 
+            <InputXML title="NFe"
             setFiles={setFiles}
             />
             <div className="LadoDireito">
