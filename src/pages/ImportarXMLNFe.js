@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import InputXML from "../components/InputXML";
 import x2js from 'x2js'
+import { useLocation } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
@@ -14,8 +15,8 @@ import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import Alert from '@mui/material/Alert';
 
-function ImportarXMLNFe({dadosUsuarios}) {
-
+function ImportarXMLNFe({ location }) {
+  location = useLocation();
   const [files, setFiles] = useState();
   const [allData, setAllData] = useState();
   const [cont, setCont] = useState(0);

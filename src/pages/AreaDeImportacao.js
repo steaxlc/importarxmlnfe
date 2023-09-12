@@ -1,19 +1,22 @@
 import React from 'react'
 import { useState } from 'react'
-import { Outlet } from 'react-router-dom'
+import { Outlet,useLocation } from 'react-router-dom'
 
 import NavBarImportacao from '../components/NavBarImportacao'
 import Login from '../components/Login'
+import ImportarXMLNFe from './ImportarXMLNFe'
 
 const AreaDeImportacao = () => {
     
   const [dadosUsuarios, setDadosUsuarios] = useState(JSON.parse(localStorage.getItem("usuario")))
+  let location = useLocation();
 
   return (
     <div className="AreaImportacao">
         <div className="conteudoImportacao">
         {dadosUsuarios ? 
-                  <Outlet /> :
+          <> {(location.pathname.includes("/xmlnfe") || location.pathname.includes("/xmlcfe")) ? <Outlet location={location} /> : <ImportarXMLNFe />} </>
+                   :
           <Login dadosUsuarios={dadosUsuarios} setDadosUsuarios={setDadosUsuarios} />
               }
         </div>

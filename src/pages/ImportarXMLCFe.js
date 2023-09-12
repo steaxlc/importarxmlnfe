@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import InputXML from "../components/InputXML";
 import x2js from 'x2js'
+import { useLocation } from 'react-router-dom'
 
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
@@ -12,7 +13,8 @@ import CheckCircleIcon from '@mui/icons-material/CheckCircle';
 
 import Alert from '@mui/material/Alert';
 
-function ImportarXMLCFe({dadosUsuarios}) {
+function ImportarXMLCFe({ location }) {
+  location = useLocation();
 
   const [files, setFiles] = useState();
   const [allData, setAllData] = useState();
