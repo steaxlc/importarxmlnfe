@@ -156,9 +156,9 @@ const columns = [
     }
   }
 
-  const somarICMS = (item) => {
+  const somarTotProd = (item) => {
     var temp = 0;
-    item.map((nota) => temp = temp + parseFloat(nota.ICMS))
+    item.map((nota) => temp = temp + parseFloat(nota.Valor_Produto))
     return temp
   }
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
@@ -166,14 +166,14 @@ const columns = [
   const [selectedCFOP, setSelectedCFOP] = useState([]);
   const [selectedNCM, setSelectedNCM] = useState("");
   const [selectedCupom, setSelectedCupom] = useState("");
-  const [sumICMS, setSumICMS] = useState(somarICMS(allData));
+  const [sumTotProd, setSumTotProd] = useState(somarTotProd(allData));
 
   function handleFilter () {
     const temp = allData.filter(
       item => (temCFOP(item) && temCST(item) && temNCM(item) && temNota(item))
     ) 
     setDadosFiltrados(temp)
-    setSumICMS(somarICMS(temp))
+    setSumTotProd(somarTotProd(temp))
   }
 
   const handleDownload = () => {
@@ -192,7 +192,7 @@ const columns = [
     <div className='paginaTabela'>
       <Box sx={{ flexGrow: 1 }}>
       <Grid container spacing={2}>
-          <Grid item xs={12}>
+          <Grid item xs={9}>
             <div className='filtros'>
               <Grid container spacing={2}>
                 <Grid item xs={12}>
@@ -223,7 +223,13 @@ const columns = [
                 </div>
               </Grid>
             </div>
-        </Grid>
+          </Grid>
+          <Grid item xs={3}>
+            <div className="somaAliquota">
+              <h1>Somatório Valor</h1>
+              <h2>{ sumTotProd.toFixed(2)}</h2>
+            </div>
+          </Grid>
         </Grid>
         <Grid item xs={12}>
           <div className="tabela">
