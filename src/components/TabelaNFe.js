@@ -7,9 +7,9 @@ import * as XLSX from 'xlsx/xlsx.mjs';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import PictureAsPdfIcon from '@mui/icons-material/PictureAsPdf';
 
-export default function Tabela({ allData, nomeEmpresa, dadosFiltrados, setDadosFiltrados}) {
-
+export default function Tabela({ allData, nomeEmpresa, dadosFiltrados, setDadosFiltrados, pdfNotas}) {
   
 const columns = [
   {
@@ -105,8 +105,38 @@ const columns = [
     right: true,
     reorder: true,
   },
+  {
+      name: 'DANFE',
+    selector: row => danfePdf(row.Chave),
+    width: '80px',
+    center: true,
+    reorder: true,
+  },
   ];
   
+  const danfePdf = (chave) => {
+    return <div style={{cursor: "pointer"}} onClick={()=> imprimirPdf(chave)}><PictureAsPdfIcon /></div>
+  }
+
+  const imprimirPdf = async (chave) => {
+    let corpo = pdfNotas[chave]
+    let base = await fetch('https://ws.meudanfe.com/api/v1/get/nfe/xmltodanfepdf/API', {
+         method: "POST",
+         body: corpo
+    });
+    if (200 !== base.status) {
+      alert("Falha ao gerar PDF! Por favor, tente mais tarde.")
+    }
+    let pdf = await base.json();
+    try {
+      let novaAba = window.open("about:blank");
+      novaAba.document.write("<html<head><title>" + chave + ".pdf</title><style>body{margin: 0px;}iframe{border-width: 0px;}</style></head>")
+      novaAba.document.write("<body><embed width='100%' height='100%' src='data:application/pdf;base64," + pdf + "'></embed></body></html>")
+  } catch (l) {
+      alert("Para a exibiçãoo do PDF, favor permitir janela pop-up no navegador. Após permitir favor tentar novamente.")
+  }
+  }
+
   const temCST = (item) => {
     if (selectedCST.length > 0) {
       for (var ind = 0; ind < selectedCST.length; ind++){
@@ -234,7 +264,6 @@ const columns = [
         pagination
         highlightOnHover
         striped
-        pointerOnHover
         actions={actionsMemo}
         paginationRowsPerPageOptions={[10, 25, 50, 200, 200]}
           paginationComponentOptions={rowsPerPageText}

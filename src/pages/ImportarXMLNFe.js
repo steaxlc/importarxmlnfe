@@ -6,12 +6,10 @@ import { useLocation } from 'react-router-dom'
 import { styled } from '@mui/material/styles';
 import LinearProgress, { linearProgressClasses } from '@mui/material/LinearProgress';
 import Tabela from "../components/TabelaNFe";
-import Login from "../components/Login";
 
 import CircularProgress from '@mui/material/CircularProgress';
 import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
 import CheckCircleIcon from '@mui/icons-material/CheckCircle';
-import ExitToAppIcon from '@mui/icons-material/ExitToApp';
 
 import Alert from '@mui/material/Alert';
 
@@ -24,14 +22,14 @@ function ImportarXMLNFe({ location }) {
   const linhas = [];
   const [nomeEmpresa, setNomeEmpresa] = useState("");
   const [dadosFiltrados, setDadosFiltrados] = useState();
-  const [infoOpen, setInfoOpen] = useState(false);
+  const [pdfNotas, setPdfNotas] = useState();
 
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
   }
 
 
-  const dadosNotas = (dados) => {
+  const dadosNotas = (dados, pedeefes) => {
     for (var nota in dados) {
       if (dados.hasOwnProperty(nota)) {
         var valorIPI;
@@ -154,6 +152,7 @@ function ImportarXMLNFe({ location }) {
           }
         setAllData([...linhas]);
         setDadosFiltrados([...linhas])
+        setPdfNotas(pedeefes)
       }
       setNomeEmpresa(dados[nota].dest.xNome)
   }
@@ -200,6 +199,7 @@ function ImportarXMLNFe({ location }) {
         case 1:
           return (
             <Tabela nomeEmpresa={nomeEmpresa}
+            pdfNotas={pdfNotas}
               allData={allData}
               dadosFiltrados={dadosFiltrados}
               setDadosFiltrados={setDadosFiltrados}
@@ -233,7 +233,7 @@ function ImportarXMLNFe({ location }) {
   useEffect(() => {
     if (files !== undefined) {
       var convert = new x2js();
-      var chave, jsonDoc, prov, todosDados;
+      var chave, jsonDoc, prov, provPdf, todosDados, todosPdf;
       readmultifiles(files); 
       function readmultifiles(files) {
         setCont(0);
@@ -245,15 +245,18 @@ function ImportarXMLNFe({ location }) {
             jsonDoc = convert.xml2js(reader.result);
             chave = jsonDoc.nfeProc.NFe.infNFe._Id.replace("NFe", "");
             prov = { [chave]: { ...jsonDoc.nfeProc.NFe.infNFe } }
+            provPdf = { [chave] : reader.result}
             if (files.length === 1) {
               todosDados = prov;
+              todosPdf = provPdf;
             } else {
+              todosPdf = {...todosPdf, ...provPdf}
               todosDados = {...todosDados, ...prov}
             }
             setCont(index+1)
             readFile(index + 1)
             if (index === files.length - 1) {
-              dadosNotas(todosDados);
+              dadosNotas(todosDados, todosPdf);
             }
           }
           reader.readAsText(file);
