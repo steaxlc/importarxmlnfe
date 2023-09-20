@@ -265,7 +265,7 @@ const columns = [
         highlightOnHover
         striped
         actions={actionsMemo}
-        paginationRowsPerPageOptions={[10, 25, 50, 200, 200]}
+        paginationRowsPerPageOptions={[10, 25, 50, 200, 500]}
           paginationComponentOptions={rowsPerPageText}
       />
         </div>

@@ -1,6 +1,7 @@
 import DataTable from 'react-data-table-component';
 
 import SelectCST from './SelectCST';
+import SelectCSTPIS from './SelectCSTPIS';
 import SelectCFOP from './SelectCFOP';
 import { useState, useMemo } from "react";
 import * as XLSX from 'xlsx/xlsx.mjs';
@@ -34,13 +35,6 @@ const columns = [
       reorder: true,
   },
   {
-      name: 'CST',
-      selector: row => row.CST,
-      grow: 1,
-      sortable: true,
-      reorder: true,
-  },
-  {
       name: 'CFOP',
       selector: row => row.CFOP,
       grow: 1,
@@ -55,11 +49,27 @@ const columns = [
     reorder: true,
   },
   {
+      name: 'CST PIS',
+      selector: row => row.CST_PIS,
+    grow: 1,
+    right: true,
+      sortable: true,
+      reorder: true,
+  },
+  {
       name: 'PIS',
     selector: row => row.PIS,
     grow: 1,
     right: true,
     reorder: true,
+  },
+  {
+      name: 'CST COFINS',
+      selector: row => row.CST_COFINS,
+      grow: 1,
+      right: true,
+      sortable: true,
+      reorder: true,
   },
   {
       name: 'COFINS',
@@ -71,9 +81,9 @@ const columns = [
   ];
   
   const temCST = (item) => {
-    if (selectedCST.length > 0) {
-      for (var ind = 0; ind < selectedCST.length; ind++){
-        if (item.CST === selectedCST[ind]) {
+    if (selectedCSTPIS.length > 0) {
+      for (var ind = 0; ind < selectedCSTPIS.length; ind++){
+        if (item.CST_PIS === selectedCSTPIS[ind]) {
           return true
         }
       }
@@ -118,7 +128,7 @@ const columns = [
     return temp
   }
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
-  const [selectedCST, setSelectedCST] = useState([]);
+  const [selectedCSTPIS, setSelectedCSTPIS] = useState([]);
   const [selectedCFOP, setSelectedCFOP] = useState([]);
   const [selectedNCM, setSelectedNCM] = useState("");
   const [selectedCodProd, setSelectedCodProd] = useState("");
@@ -167,7 +177,7 @@ const columns = [
               </Grid>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                    <SelectCST allData={allData} setSelectedCST={setSelectedCST} />
+                    <SelectCSTPIS allData={allData} setSelectedCSTPIS={setSelectedCSTPIS} />
                   </Grid>
                   <Grid item xs={6}>
                     <SelectCFOP allData={allData} setSelectedCFOP={ setSelectedCFOP} />
@@ -199,7 +209,7 @@ const columns = [
         striped
         pointerOnHover
         actions={actionsMemo}
-        paginationRowsPerPageOptions={[10, 25, 50, 200, 200]}
+        paginationRowsPerPageOptions={[10, 25, 50, 200, 500]}
           paginationComponentOptions={rowsPerPageText}
       />
         </div>

@@ -28,10 +28,10 @@ function ImportarTXTSped({ location }) {
         return {Cod_Produto, Produto, NCM}
     }
     
-  function createData(Cod_Produto, NCM , Produto, CST, CFOP, Valor_Produto, PIS, COFINS
+  function createData(Cod_Produto, NCM , Produto, CFOP, Valor_Produto, CST_PIS, PIS, CST_COFINS, COFINS
   ) {
     return {
-        Cod_Produto, NCM, Produto, CST, CFOP,Valor_Produto,  PIS, COFINS
+        Cod_Produto, NCM, Produto, CFOP,Valor_Produto, CST_PIS, PIS, CST_COFINS, COFINS
     };
   }
 
@@ -49,10 +49,11 @@ function ImportarTXTSped({ location }) {
                             linhasDados.push(createData(linhasProdutos[pos].Cod_Produto,
                                 linhasProdutos[pos].NCM,
                                 linhasProdutos[pos].Produto,
-                                prov[10],
                                 prov[11],
                                 prov[7],
+                                prov[25],
                                 prov[30],
+                                prov[31],
                                 prov[36]))
                         }
                 } else if (dados[ind].includes("|0140|")) {
