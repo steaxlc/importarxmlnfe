@@ -133,9 +133,8 @@ button:hover {
     align-items: center;
     justify-content: center;
     margin-top: 30px;
-    margin-right: 30px;
     height: 250px;
-    width: 330px;
+    width: 360px;
 }
 
 .UploadCard{
@@ -178,6 +177,11 @@ button:hover {
     display: flex;
     justify-content: space-around;
     height: 80%;
+    margin-left: 20px;
+}
+
+.Subir{
+    margin-bottom: 23px;
 }
 
  #continueButton h4{

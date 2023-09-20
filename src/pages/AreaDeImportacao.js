@@ -15,7 +15,7 @@ const AreaDeImportacao = () => {
     <div className="AreaImportacao">
         <div className="conteudoImportacao">
         {dadosUsuarios ? 
-          <> {(location.pathname.includes("/xmlnfe") || location.pathname.includes("/xmlcfe")) ? <Outlet location={location} /> : <ImportarXMLNFe />} </>
+          <> {(location.pathname.includes("/xmlnfe") || location.pathname.includes("/xmlcfe") || location.pathname.includes("/txtsped")) ? <Outlet location={location} /> : <ImportarXMLNFe />} </>
                    :
           <Login dadosUsuarios={dadosUsuarios} setDadosUsuarios={setDadosUsuarios} />
               }

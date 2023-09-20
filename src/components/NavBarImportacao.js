@@ -9,6 +9,7 @@ import MenuIcon from '@mui/icons-material/Menu';
 import NewspaperIcon from '@mui/icons-material/Newspaper';
 import ReceiptIcon from '@mui/icons-material/Receipt';
 import ExitToAppIcon from '@mui/icons-material/ExitToApp';
+import FeedIcon from '@mui/icons-material/Feed';
 
 
 const NavBarImportacao = ( {dadosUsuarios, setDadosUsuarios}) => {
@@ -50,6 +51,12 @@ const NavBarImportacao = ( {dadosUsuarios, setDadosUsuarios}) => {
                         <ReceiptIcon/> <span className="navitem">Importar CFe</span>
                       </Link>
                       <span className="tooltip">Importar CFe</span>
+                  </li>
+                  <li>
+                    <Link to="txtsped">
+                        <FeedIcon/> <span className="navitem">Importar Sped</span>
+                      </Link>
+                      <span className="tooltip">Importar Sped</span>
                   </li>
               </ul>
               <div className="bottom" onClick={handleSair}>

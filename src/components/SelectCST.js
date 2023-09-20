@@ -6,6 +6,7 @@ import Stack from '@mui/material/Stack';
 
 export default function Tags({ allData, setSelectedCST }) {
   const todosCST = [...new Set(allData.map(item => item.CST))];
+  todosCST.sort();
 
     const handleChange = (event, value) => setSelectedCST(value);
   return (
