@@ -1,6 +1,5 @@
 import DataTable from 'react-data-table-component';
 
-import SelectCST from './SelectCST';
 import SelectCSTPIS from './SelectCSTPIS';
 import SelectCFOP from './SelectCFOP';
 import { useState, useMemo } from "react";
@@ -8,6 +7,9 @@ import * as XLSX from 'xlsx/xlsx.mjs';
 import Grid from '@mui/material/Grid'
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+
+import ArrowForwardIcon from '@mui/icons-material/ArrowForward';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 export default function Tabela({ allData, nomeEmpresa, dadosFiltrados, setDadosFiltrados}) {
 
@@ -133,6 +135,21 @@ const columns = [
   const [selectedNCM, setSelectedNCM] = useState("");
   const [selectedCodProd, setSelectedCodProd] = useState("");
   const [sumTotProd, setSumTotProd] = useState(somarTotProd(allData));
+  const todosCST = [...new Set(allData.map(item => item.CST_PIS))];
+  const SomatorioTodosCst = [{ id: 0, cst: "", soma: sumTotProd }]
+  const [step, setStep] = useState(0);
+  todosCST.sort();
+
+  const SumTodosCST = () => {
+    for (var ind = 0; ind < todosCST.length; ind++){
+      const temp = allData.filter(
+        item => (item.CST_PIS === todosCST[ind])
+      ) 
+      SomatorioTodosCst.push({id: (ind+1), cst: todosCST[ind], soma: somarTotProd(temp)})
+    }
+  }
+
+  SumTodosCST()
 
   function handleFilter () {
     const temp = allData.filter(
@@ -154,13 +171,29 @@ const columns = [
 
   const actionsMemo = useMemo(() => <button className='downloadButton' onClick={handleDownload}><span>Exportar Excel</span></button>, [dadosFiltrados]);
 
+  const next = () => {
+    if (step < SomatorioTodosCst.length - 1) { 
+      setStep(step + 1)
+    } else {
+      setStep(0)
+    }
+  }
+
+  const prev = () => {
+    if (step > 0) {
+      setStep(step - 1)
+    } else {
+      setStep(SomatorioTodosCst.length - 1)
+    }
+  }
+
   return (
     <div className='paginaTabela'>
       <Box sx={{ flexGrow: 1 }}>
-      <Grid container spacing={2}>
+      <Grid container>
           <Grid item xs={9}>
             <div className='filtros'>
-              <Grid container spacing={2}>
+              <Grid >
                 <Grid item xs={12}>
                   <div className="titulo">
                     Filtros da Tabela
@@ -192,8 +225,12 @@ const columns = [
           </Grid>
           <Grid item xs={3}>
             <div className="somaAliquota">
-              <h1>Somatório Valor</h1>
-              <h2>{ sumTotProd.toFixed(2)}</h2>
+              <ArrowBackIcon className='esquerda' onClick={prev} />
+              <ArrowForwardIcon className='direita' onClick={next } />
+              <div className="dadosSomatorio">
+                <h2>Valor Total {step !== 0 && <><br/>{`do CST ${SomatorioTodosCst[step].cst}`}</>} </h2>
+                <h2>{ Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(SomatorioTodosCst[step].soma)}</h2>
+              </div>
             </div>
           </Grid>
         </Grid>

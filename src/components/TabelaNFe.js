@@ -249,8 +249,11 @@ const columns = [
         </Grid>
           <Grid item xs={3}>
             <div className="somaAliquota">
-              <h1>Somatório ICMS</h1>
-              <h2>{ sumICMS.toFixed(2)}</h2>
+              <div className="dadosSomatorio">
+              <h2>Somatório ICMS</h2>
+              <h2>{Intl.NumberFormat('pt-BR', { style: 'currency', currency: 'BRL' }).format(sumICMS.toFixed(2)) }</h2>
+
+              </div>
             </div>
           </Grid>
         </Grid>

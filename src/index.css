@@ -260,12 +260,7 @@ button:hover {
 
 .somaAliquota{
     height: 220px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-
-    
+    position: relative;
     background-color: white;
     margin: 30px;
     padding: 10px;
@@ -388,4 +383,29 @@ button:hover {
     right: 5px;
     transition: all 0.5s ease;
     width: calc(100% - 70px);
+}
+
+.direita{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.esquerda{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.dadosSomatorio{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Lato', sans-serif;
 }
