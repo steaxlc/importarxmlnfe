@@ -27,7 +27,7 @@ function ImportarXMLNFe({ location }) {
   function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
     return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
   }
- 
+  
 
   const dadosNotas = (dados, pedeefes) => {
     for (var nota in dados) {
