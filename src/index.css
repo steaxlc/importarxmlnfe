@@ -1,0 +1,411 @@
+* {
+    margin: 0;
+    padding: 0;
+}
+
+body{
+    background: rgb(56,249,242);
+    background: linear-gradient(135deg, white 0%, #98E8C1 33%,  #26CEAA 66%,  #078D70 100%) no-repeat;
+    width: 100%;
+    min-height: 100vh;
+}
+
+h1{
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
+.ContinuarLogado{
+    font-family: 'Palanquin Dark', sans-serif;
+    font-weight: 300;
+    margin-top: 60px;
+
+}
+
+h3{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+h4{
+    margin-bottom: 10px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+    margin: 7px;
+    margin-bottom: 15px;
+}
+
+p{
+    
+    margin: 15px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+button{
+    background: none;
+    padding: 7px;
+    border: 3px solid #3D1A78;
+    border-radius: 25px;
+    color: #3D1A78;
+    cursor: pointer;
+}
+.InfoProgress{
+    margin-top: 50px;
+    margin-bottom: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+.ArquivosProntos{
+    margin-bottom: 6px;
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+button:hover {
+    background-color: #3D1A78 ;
+    color: white;
+    transition: 0.7s;
+}
+
+.UploadBox{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 450px;
+    width: 800px;
+    background: rgb(255, 255, 255);
+    border-left: 7px solid #3D1A78;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.InfoLogin{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+}
+
+.InfoLogin h3 {
+    margin-top: 30px;
+    text-align: justify;
+}
+
+.centralizar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+
+}
+
+.dadoscentrais{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.BotaoVoltar h4{
+    margin-top: 15px;
+    font-size: 24px;
+    font-weight: bold;
+    padding: 0 30px;
+}
+
+.BotaoVoltar button:hover {
+    background-color: white ;
+    color: #3D1A78;
+    transition: 0.7s;
+}
+.BotaoVoltar button {
+    border-radius: 40px;
+    border: 3px solid white;
+    color: white;
+    transition: 0.7s;
+}
+
+.UploadButton{
+    border: 5px dashed rgb(226, 226, 226);
+    flex-direction: column;
+    border-radius: 15px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-top: 30px;
+    height: 250px;
+    width: 360px;
+}
+
+.UploadCard{
+    display: block;
+    background: white;
+    margin-top: -30px;
+    margin-left: 15px;
+}
+
+.BotaoContinuar{
+    margin-bottom: -25px;
+    display: flex;
+    align-items: right;
+    justify-content: right;
+}
+
+.BotaoVoltar{
+    display: flex;
+    align-items: right;
+    justify-content: right;
+    margin: 20px;
+}
+
+#continueButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+#backButton{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.LadoDireito{
+    flex-direction: column;
+    display: flex;
+    justify-content: space-around;
+    height: 80%;
+    margin-left: 20px;
+}
+
+.Subir{
+    margin-bottom: 23px;
+}
+
+ #continueButton h4{
+    margin: 7px;
+    margin-bottom: 7px;
+}
+
+#continueButton{
+    padding: 10px;
+    background-color: #3D1A78 ;
+    color: white;
+    transition: 0.7s;
+}
+
+.rdt_Table{
+    font-family: 'Lato', sans-serif;
+    font-weight: 300;
+}
+
+.BotaoLogar{
+    font-family: 'Lato', sans-serif;
+    font-weight: bold;
+    font-size: 16px;
+    width: 450px;
+    color: black;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border: 3px solid black;
+}
+
+.BotaoLogar:hover{
+    border: 3px solid transparent;
+}
+
+.BotaoLogar span {
+    margin-left: 15px;
+}
+
+
+.filtros{
+    background-color: white;
+    margin: 30px;
+    padding: 10px;
+    border-left: 7px solid #3D1A78;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.titulo{
+    font-family: 'Lato', sans-serif;
+    margin-bottom: 15px;
+    font-weight: 300;
+    font-size: 20px;
+    width: 100%;
+    color: rgb(114, 114, 114);
+    border-bottom: 1px solid lightgray;
+    border-radius: 1px;
+}
+
+.downloadButton{
+    margin-top: 10px;
+    padding: 10px 15px;
+    border: 3px solid #3D1A78;
+    color: #3D1A78;
+}
+
+.downloadButton:hover {
+    background-color: #3D1A78 ;
+    color: white;
+    transition: 0.7s;
+}
+
+#checkbox{
+    margin-right: 10px;
+}
+
+.somaAliquota{
+    height: 220px;
+    position: relative;
+    background-color: white;
+    margin: 30px;
+    padding: 10px;
+    border-left: 7px solid #3D1A78;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+.tabela{
+    margin: 30px;
+    border-left: 7px solid #3D1A78;
+    box-shadow: 0px 10px 20px 5px rgba(80, 80, 80, 0.5);
+}
+
+
+.centralizarFiltros{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+.alinharDireita{
+    width: 690px;
+    display: flex;
+    align-items:center;
+    justify-content: right;
+
+}
+
+.camposFiltros{
+    display: flex;
+}
+
+.filtros button{
+    width: 150px;
+}
+
+.paginaTabela{
+    justify-content: right;
+    margin: 0;
+    font-family: 'Palanquin Dark', sans-serif;
+}
+
+.DadosUsuarios{
+    display: flex;
+    align-items:center;
+    justify-content: right;
+    margin: 10px 10px -30px 0;
+    padding: 10px;
+}
+
+.InfoUsuario{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+    flex-direction: column;
+    background-color: white;
+    border-radius: 25px;
+    padding: 10px;
+}
+
+.parteDeBaixo{
+    border-top: 1px solid lightgray;
+    width: 85%;
+    display: flex;
+    align-items:center;
+    justify-content: left;
+    padding: 10px;
+    cursor: pointer;
+}
+
+.parteDeCima{
+    display: flex;
+    align-items:center;
+    justify-content: center;
+
+}
+
+.nome{
+    font-weight: bold;
+    font-family: 'Palanquin Dark', sans-serif;
+    margin-bottom: -10px;
+}
+.email{
+    margin-top: -10px;
+
+}
+.usuario{
+    padding: 10px;
+}
+
+.DadosUsuarios img{
+    cursor: pointer;
+    background-color: white;
+    width: 50px;
+    height: 50px;
+    border-radius: 50px;
+}
+
+.TextoSair{
+    font-family: 'Palanquin Dark', sans-serif;
+    margin-left: 10px;
+}
+
+.TextoSelecionar{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin-right: 25px;
+}
+
+.TextoSelecionar.TextoEsquerda{
+    justify-content: left;
+}
+
+.conteudoImportacao{
+    position: relative;
+    min-height: 100vh;
+    top: 0;
+    right: 5px;
+    transition: all 0.5s ease;
+    width: calc(100% - 70px);
+}
+
+.direita{
+    position: absolute;
+    right: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.esquerda{
+    position: absolute;
+    left: 15px;
+    top: 50%;
+    cursor: pointer;
+}
+
+.dadosSomatorio{
+    height: inherit;
+    width: inherit;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    
+    font-family: 'Lato', sans-serif;
+}
