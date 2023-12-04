@@ -209,7 +209,7 @@ function ImportarXMLCFe({ location }) {
           )
         case 2:
           return (
-            <div>Testcando</div>
+            <div>Testando</div>
           )
       default:
         return (

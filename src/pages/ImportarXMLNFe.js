@@ -24,8 +24,8 @@ function ImportarXMLNFe({ location }) {
   const [dadosFiltrados, setDadosFiltrados] = useState();
   const [pdfNotas, setPdfNotas] = useState();
 
-  function createData(Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
-    return { Chave, Nota_Fiscal, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
+  function createData(Chave, Nota_Fiscal, NCM, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS) {
+    return { Chave, Nota_Fiscal, NCM, Data, Empresa, Produto, CST, CFOP, IPI, Valor_Produto, Desconto, Outras_Despesas, Frete, ICMS };
   }
   
 
@@ -81,6 +81,7 @@ function ImportarXMLNFe({ location }) {
                 valorAliquota = (valorTotal * valorDividendo).toFixed(2)
                 linhas.push(createData(nota,
                   dados[nota].ide.nNF,
+                  dados[nota].det[ind].prod.NCM,
                   dataCompleta,
                   dados[nota].emit.xNome,
                   dados[nota].det[ind].prod.xProd,
@@ -136,6 +137,7 @@ function ImportarXMLNFe({ location }) {
               valorAliquota = (valorTotal * valorDividendo).toFixed(2)
               linhas.push(createData(nota,
                 dados[nota].ide.nNF,
+                dados[nota].det.prod.NCM,
                 dataCompleta,
                 dados[nota].emit.xNome,
                 dados[nota].det.prod.xProd,

@@ -2,6 +2,7 @@ import DataTable from 'react-data-table-component';
 
 import SelectCST from './SelectCST';
 import SelectCFOP from './SelectCFOP';
+import SelectNCM from './SelectNCM';
 import { useState, useMemo } from "react";
 import * as XLSX from 'xlsx/xlsx.mjs';
 import Grid from '@mui/material/Grid'
@@ -23,6 +24,13 @@ const columns = [
       name: 'Nota Fiscal',
     selector: row => row.Nota_Fiscal,
     width: '110px',
+    sortable: true,
+    reorder: true,
+  },
+  {
+      name: 'NCM',
+    selector: row => row.NCM,
+    grow: 1,
     sortable: true,
     reorder: true,
   },
@@ -163,11 +171,16 @@ const columns = [
     }
   }
 
-  const temChave = (item) => {
-    if (item.Chave.includes(selectedChave)) {
-      return true
-    } else {
+  const temNCM = (item) => {
+    if (selectedNCM.length > 0) {
+      for (var ind = 0; ind < selectedNCM.length; ind++){
+        if (item.NCM === selectedNCM[ind]) {
+          return true
+        }
+      }
       return false
+    } else {
+      return true
     }
   }
 
@@ -187,13 +200,13 @@ const columns = [
   const rowsPerPageText = { rowsPerPageText: 'Linhas por Página:' }
   const [selectedCST, setSelectedCST] = useState([]);
   const [selectedCFOP, setSelectedCFOP] = useState([]);
-  const [selectedChave, setSelectedChave] = useState("");
+  const [selectedNCM, setSelectedNCM] = useState([]);
   const [selectedNota, setSelectedNota] = useState("");
   const [sumICMS, setSumICMS] = useState(somarICMS(allData));
 
   function handleFilter () {
     const temp = allData.filter(
-      item => (temCFOP(item) && temCST(item) && temChave(item) && temNota(item))
+      item => (temCFOP(item) && temCST(item) && temNCM(item) && temNota(item))
     ) 
     setDadosFiltrados(temp)
     setSumICMS(somarICMS(temp))
@@ -226,10 +239,10 @@ const columns = [
               </Grid>
               <Grid container spacing={2}>
                 <Grid item xs={6}>
-                <TextField id="chave" label="Chave" fullWidth onChange={(e)=> setSelectedChave(e.target.value)} variant="outlined" />
+                    <SelectNCM allData={allData} setSelectedNCM={setSelectedNCM} />
                   </Grid>
                   <Grid item xs={6}>
-                  <TextField id="notaFiscal" label="Nota Fiscal" onChange={(e)=> setSelectedNota(e.target.value)}  fullWidth  variant="outlined" />
+                  <div style={{marginTop: '10px', marginBottom: '10px'}}><TextField id="notaFiscal" label="Nota Fiscal" onChange={(e)=> setSelectedNota(e.target.value)}  fullWidth  variant="outlined" /></div>
                 </Grid>
               </Grid>
               <Grid container spacing={2}>
